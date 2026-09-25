@@ -1,0 +1,32 @@
+{
+  "id": "rotfeld-minimal-1850",
+  "startYear": 1850,
+  "startMonth": 1,
+  "districts": [
+    { "id": "old-market", "name": "Alter Markt", "access": 0.95 },
+    { "id": "riverside", "name": "Flussviertel", "access": 0.82 },
+    { "id": "foundry", "name": "Gießereiviertel", "access": 0.72 },
+    { "id": "north-fields", "name": "Nordfelder", "access": 0.48 }
+  ],
+  "sectors": [
+    { "id": "food", "name": "Nahrungsmittel", "external_demand_money": 330 },
+    { "id": "textiles", "name": "Textilien", "external_demand_money": 240 },
+    { "id": "goods", "name": "Haushaltswaren", "external_demand_money": 210 }
+  ],
+  "households": [
+    { "id": "workers-core", "class": "workers", "district": "foundry", "population": 720, "labor_participation": 0.42, "monthly_growth": 0.0007, "consumption_propensity": 0.96, "rent_per_capita": 0.12, "benefit_rate": 0.05, "capital_income_weight": 0 },
+    { "id": "workers-river", "class": "workers", "district": "riverside", "population": 430, "labor_participation": 0.40, "monthly_growth": 0.0008, "consumption_propensity": 0.95, "rent_per_capita": 0.14, "benefit_rate": 0.05, "capital_income_weight": 0 },
+    { "id": "petit-bourgeois", "class": "petit_bourgeois", "district": "old-market", "population": 210, "labor_participation": 0.28, "monthly_growth": 0.0003, "consumption_propensity": 0.84, "rent_per_capita": 0.20, "benefit_rate": 0.02, "capital_income_weight": 0.15 },
+    { "id": "capitalists", "class": "capitalists", "district": "old-market", "population": 85, "labor_participation": 0.08, "monthly_growth": 0.0002, "consumption_propensity": 0.64, "rent_per_capita": 0.36, "benefit_rate": 0, "capital_income_weight": 0.85 }
+  ],
+  "firms": [
+    { "id": "mill-a", "name": "Rotfelder Mühle", "sector": "food", "district": "riverside", "cash": 1800, "capital_stock": 180, "reference_capital": 180, "technology": 1.00, "capacity": 145, "max_jobs": 82, "labor_productivity": 2.1, "base_productivity": 22, "wage_offer": 1.05, "wage_multiplier": 1.02, "job_security": 0.90, "price": 3.20, "target_markup": 0.16, "input_cost_per_unit": 0.42, "fixed_cost": 36 },
+    { "id": "bakery-b", "name": "Bäckerei Kron", "sector": "food", "district": "old-market", "cash": 1100, "capital_stock": 95, "reference_capital": 95, "technology": 0.94, "capacity": 92, "max_jobs": 58, "labor_productivity": 1.8, "base_productivity": 18, "wage_offer": 1.00, "wage_multiplier": 1.00, "job_security": 0.82, "price": 3.45, "target_markup": 0.14, "input_cost_per_unit": 0.47, "fixed_cost": 28 },
+    { "id": "textile-a", "name": "Adler Textil", "sector": "textiles", "district": "foundry", "cash": 2200, "capital_stock": 240, "reference_capital": 220, "technology": 1.08, "capacity": 135, "max_jobs": 95, "labor_productivity": 1.75, "base_productivity": 21, "wage_offer": 1.02, "wage_multiplier": 1.00, "job_security": 0.86, "price": 5.60, "target_markup": 0.20, "input_cost_per_unit": 0.72, "fixed_cost": 54 },
+    { "id": "textile-b", "name": "Weber & Sohn", "sector": "textiles", "district": "riverside", "cash": 1450, "capital_stock": 150, "reference_capital": 160, "technology": 0.96, "capacity": 105, "max_jobs": 78, "labor_productivity": 1.58, "base_productivity": 18, "wage_offer": 0.98, "wage_multiplier": 0.98, "job_security": 0.78, "price": 5.35, "target_markup": 0.18, "input_cost_per_unit": 0.76, "fixed_cost": 46 },
+    { "id": "textile-fragile", "name": "Nordfelder Spinnerei", "sector": "textiles", "district": "north-fields", "cash": 90, "capital_stock": 80, "reference_capital": 120, "technology": 0.68, "capacity": 80, "max_jobs": 60, "labor_productivity": 1.15, "base_productivity": 11, "wage_offer": 1.20, "wage_multiplier": 1.08, "job_security": 0.55, "price": 4.20, "target_markup": 0.10, "input_cost_per_unit": 1.20, "fixed_cost": 95 },
+    { "id": "goods-a", "name": "Rotfeld Eisenwaren", "sector": "goods", "district": "foundry", "cash": 2500, "capital_stock": 310, "reference_capital": 280, "technology": 1.10, "capacity": 120, "max_jobs": 82, "labor_productivity": 1.55, "base_productivity": 20, "wage_offer": 1.08, "wage_multiplier": 1.03, "job_security": 0.92, "price": 7.80, "target_markup": 0.22, "input_cost_per_unit": 1.08, "fixed_cost": 62 },
+    { "id": "goods-b", "name": "Heller Werkstätten", "sector": "goods", "district": "old-market", "cash": 1600, "capital_stock": 170, "reference_capital": 170, "technology": 0.98, "capacity": 88, "max_jobs": 65, "labor_productivity": 1.38, "base_productivity": 16, "wage_offer": 1.00, "wage_multiplier": 1.00, "job_security": 0.80, "price": 7.35, "target_markup": 0.19, "input_cost_per_unit": 1.02, "fixed_cost": 45 },
+    { "id": "goods-c", "name": "Nordwerk", "sector": "goods", "district": "north-fields", "cash": 950, "capital_stock": 120, "reference_capital": 130, "technology": 0.90, "capacity": 72, "max_jobs": 52, "labor_productivity": 1.30, "base_productivity": 14, "wage_offer": 0.96, "wage_multiplier": 0.96, "job_security": 0.72, "price": 7.10, "target_markup": 0.17, "input_cost_per_unit": 1.00, "fixed_cost": 39 }
+  ]
+}
