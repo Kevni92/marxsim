@@ -1,0 +1,1 @@
+(function(root){'use strict';const MS=root.MarxSim=root.MarxSim||{};MS.getCauseById=function(state,id){return(state.causalLog||[]).find(c=>c.id===id)||null;};MS.getCauseChildren=function(state,id){return(state.causalLog||[]).filter(c=>c.parentCause===id);};})(typeof globalThis!=='undefined'?globalThis:window);
