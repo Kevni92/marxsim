@@ -1,21 +1,24 @@
 # MARXSIM
 
-**Status:** Preproduction / Game-Design-Phase. Das eigentliche Spiel ist noch nicht implementiert.
+**Status:** Spielbarer Entwicklungsstand — Phasen 0–6 umgesetzt.
 
 **GitHub Pages:** https://kevni92.github.io/marxsim/
 
-MARXSIM wird eine in sich geschlossene Singleplayer-Wirtschaftssimulation für den Browser. Ziel ist nicht, Marx' Aussagen als Wahrheit zu behaupten, sondern die von Marx beschriebenen Mechanismen als **spielbares Modell** erfahrbar zu machen: Lohnarbeit, Mehrwert, Konkurrenz, Kapitalakkumulation, technische Rationalisierung, Reservearmee der Arbeit, Nachfragekrisen, Klassenbildung, Gewerkschaften, Reformen und politische Konflikte.
+MARXSIM ist eine in sich geschlossene Singleplayer-Wirtschaftssimulation für den Browser. Sie macht zentrale Zusammenhänge aus Marx' Kapitalismusanalyse als dynamisches Modell erfahrbar, ohne deren Ergebnis vorzugeben.
 
-Der Spieler steuert **nicht die gesamte Wirtschaft**. Private Betriebe und Haushalte handeln autonom. Der Spieler beeinflusst die Entwicklung als kommunale/staatliche Instanz durch Infrastruktur, Regeln, Steuern, Sozialpolitik und politische Entscheidungen. Dadurch soll der eigentliche Kern sichtbar werden: Akteure reagieren auf Anreize und Zwänge des Systems, statt nur Skripte abzuarbeiten.
+Aktuell umgesetzt sind ein deterministischer Wirtschafts- und Marktzyklus, autonome Firmen, Kapitalakkumulation und Konkurrenz, die acht Bezirke von Rotfeld als interaktive Katasterkarte, Boden- und Wohnungsmärkte, Infrastrukturinvestitionen sowie Organisation, Streiks und sozialpolitische Reformen.
 
-## Leitprinzipien
+## Aktuelle Spielsysteme
 
-- **Spiel zuerst, Theorie aus dem Spiel heraus erklären.** Keine Quiz-App.
-- **Systemische Rückkopplungen statt geskripteter Moral.** Gute Absichten können schlechte Folgen haben und umgekehrt.
-- **Keine vorgegebene marxistische Erfolgsgeschichte.** Kapitalismus kann stabilisiert, reformiert, oligopolisiert oder in eine Systemkrise geführt werden.
-- **Visuell eigenständig.** 19.-Jahrhundert-Katasterkarte, Industrie-Lithografie, Buchhaltung und politische Flugblätter statt generischer Game-Dashboard-Optik.
-- **Offline-fähig.** Kein Backend, keine API, keine externen Laufzeitabhängigkeiten. Die spätere Spielversion soll per `index.html` lokal startbar sein.
-- **Deterministisch testbar.** Gleicher Seed + gleiche Entscheidungen = gleiche Entwicklung.
+- Lohnarbeit, Produktion, Nachfrage, Lager, Preise und Gewinne
+- Konkurrenz, Rationalisierung, Gründung, Insolvenz, Übernahme und Konzentration
+- acht Bezirke, 64 Parzellen und räumliche Standortentscheidungen
+- Mieten, Bodenwerte, Wohnungsdruck, private Bautätigkeit und Binnenwanderung
+- Chausseen, Bahn, Arbeiterwohnungsbau und Kanalisation mit indirekten Raumwirkungen
+- Organisation und Unzufriedenheit aus materiellen Bedingungen
+- emergente Streiks mit Produktionswirkung und Erinnerungseffekt
+- Reformdruck sowie sieben politische Eingriffe
+- deterministische Seeds und automatisierte Phasentests
 
 ## Dokumentation
 
@@ -26,8 +29,4 @@ Der Spieler steuert **nicht die gesamte Wirtschaft**. Private Betriebe und Haush
 - [Visuelle Richtung](docs/VISUAL_DIRECTION.md)
 - [Umsetzungsplan](docs/IMPLEMENTATION_PLAN.md)
 
-## Geplanter technischer Rahmen
-
-Die endgültige Anwendung bleibt statisch und browserbasiert. Die Simulation wird in klar getrennte Systeme zerlegt (Zeit, Bevölkerung, Firmen, Markt, Investitionen, Politik, Ereignisse, Erklärungsschicht). Die Karte wird als eigene Simulations- und Darstellungsebene behandelt, nicht als dekorativer Hintergrund.
-
-GitHub Pages wird bei jedem Push auf `main` über GitHub Actions aktualisiert. Während der Preproduction zeigt Pages zunächst das Design-Dossier; später wird derselbe Deployment-Pfad das eigentliche Spiel ausliefern.
+GitHub Pages wird bei jedem Push auf `main` aktualisiert. Die Anwendung benötigt kein Backend und keine externen Laufzeitbibliotheken.
