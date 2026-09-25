@@ -5,14 +5,15 @@
   MS.simulateTick = function simulateTick(state) {
     const rng = new MS.SeededRng(state.rngState);
 
-    MS.updatePopulation(state, rng);
-    MS.updateCostOfLiving(state);
-    MS.updateLaborMarket(state);
-    MS.runProduction(state);
-    MS.clearGoodsMarket(state);
-    MS.runCapitalCycle(state, rng);
+    MS.updatePopulation(state, rng);                    // 1 population
+    MS.updateCostOfLiving(state);                       // 2 living costs
+    MS.updateLaborMarket(state);                        // 3-4 wages + matching
+    MS.runProduction(state);                            // 5-6 production + inventory
+    MS.clearGoodsMarket(state);                         // 7-9 demand, sales, prices, profit
+    MS.updateCompetition(state);                        // market shares / concentration
+    MS.runCapitalCycle(state, rng);                     // 10-11 insolvency + quarterly investment
     MS.advanceClock(state);
-    MS.captureMetrics(state);
+    MS.captureMetrics(state);                           // 16 metrics / causes
 
     state.rngState = rng.getState();
     return state;

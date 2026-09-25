@@ -6,7 +6,7 @@ const path = require('node:path');
 [
   '../src/config.js', '../src/rng.js', '../src/state.js',
   '../src/sim/clock.js', '../src/sim/population.js', '../src/sim/labor.js',
-  '../src/sim/production.js', '../src/sim/market.js', '../src/sim/investment.js',
+  '../src/sim/production.js', '../src/sim/market.js', '../src/sim/competition.js', '../src/sim/investment.js',
   '../src/sim/metrics.js', '../src/sim/engine.js'
 ].forEach(p => require(p));
 

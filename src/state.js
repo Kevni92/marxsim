@@ -39,7 +39,8 @@
         utilization: 0,
         insolvency_months: 0,
         age: 0,
-        trailing_sales: []
+        trailing_sales: [],
+        market_share: 0
       }, f)),
       economy: {
         costOfLiving: 1,
@@ -47,13 +48,16 @@
         averageWage: 0,
         pendingCapitalIncome: 0,
         investmentThisTick: 0,
-        bankruptciesThisTick: 0
+        bankruptciesThisTick: 0,
+        nextFirmSerial: 1,
+        concentration: {}
       },
       publicFinance: {
         cash: 20000,
         taxRevenue: 0,
         expenses: 0
       },
+      rules: Object.assign({ allowNewFirms: true, allowAcquisitions: true }, data.rules || {}),
       policies: {
         minimumWage: 0,
         corporateTaxRate: MS.CONFIG.corporateTaxRate

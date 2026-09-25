@@ -6,7 +6,7 @@ const path = require('node:path');
 [
   '../src/config.js', '../src/rng.js', '../src/state.js',
   '../src/sim/clock.js', '../src/sim/population.js', '../src/sim/labor.js',
-  '../src/sim/production.js', '../src/sim/market.js', '../src/sim/investment.js',
+  '../src/sim/production.js', '../src/sim/market.js', '../src/sim/competition.js', '../src/sim/investment.js',
   '../src/sim/metrics.js', '../src/sim/engine.js'
 ].forEach(p => require(p));
 
@@ -56,7 +56,7 @@ for (const f of a.firms) {
 }
 
 const initialCapital = new Map(scenario.firms.map(f => [f.id, f.capital_stock]));
-assert.ok(a.firms.some(f => f.capital_stock > initialCapital.get(f.id)), 'at least one firm should accumulate capital');
+assert.ok(a.firms.some(f => initialCapital.has(f.id) && f.capital_stock > initialCapital.get(f.id)), 'at least one firm should accumulate capital');
 assert.ok(a.firms.some(f => !f.active), 'at least one fragile firm should be able to close');
 assert.ok(a.metrics.history.some(m => m.output > 0 && m.sales > 0 && m.employment > 0), 'economy must produce, employ and sell');
 assert.ok(a.metrics.history.some(m => m.investment > 0), 'investment cycle must occur');

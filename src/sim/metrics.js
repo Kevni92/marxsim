@@ -30,7 +30,8 @@
       inventory,
       investment: state.economy.investmentThisTick,
       activeFirms: active.length,
-      bankruptcies: state.economy.bankruptciesThisTick
+      bankruptcies: state.economy.bankruptciesThisTick,
+      concentration: JSON.parse(JSON.stringify(state.economy.concentration))
     });
   };
 })(typeof globalThis !== 'undefined' ? globalThis : window);
