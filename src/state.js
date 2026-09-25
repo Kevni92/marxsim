@@ -1,70 +1,15 @@
 (function (root) {
   'use strict';
   const MS = root.MarxSim = root.MarxSim || {};
-
-  const clone = (value) => JSON.parse(JSON.stringify(value));
-
-  MS.createGameState = function createGameState(scenario, seed) {
-    const data = clone(scenario);
-    return {
-      version: MS.CONFIG.version,
-      scenarioId: data.id,
-      seed: Number(seed) >>> 0,
-      rngState: Number(seed) >>> 0,
-      tick: 0,
-      date: { year: data.startYear || MS.CONFIG.startYear, month: data.startMonth || MS.CONFIG.startMonth },
-      districts: data.districts,
-      sectors: data.sectors,
-      households: data.households.map(h => Object.assign({
-        workers_available: 0,
-        workers_employed: 0,
-        money: 0,
-        wage_income: 0,
-        capital_income: 0,
-        benefits: 0,
-        rent: 0,
-        food_spend: 0,
-        discretionary_spend: 0
-      }, h)),
-      firms: data.firms.map(f => Object.assign({
-        active: true,
-        employees: 0,
-        desired_employees: 0,
-        inventory: 0,
-        output: 0,
-        sales: 0,
-        revenue: 0,
-        profit: 0,
-        expected_demand: f.capacity * 0.72,
-        utilization: 0,
-        insolvency_months: 0,
-        age: 0,
-        trailing_sales: [],
-        market_share: 0
-      }, f)),
-      economy: {
-        costOfLiving: 1,
-        unemploymentRate: 0.12,
-        averageWage: 0,
-        pendingCapitalIncome: 0,
-        investmentThisTick: 0,
-        bankruptciesThisTick: 0,
-        nextFirmSerial: 1,
-        concentration: {}
-      },
-      publicFinance: {
-        cash: 20000,
-        taxRevenue: 0,
-        expenses: 0
-      },
-      rules: Object.assign({ allowNewFirms: true, allowAcquisitions: true }, data.rules || {}),
-      policies: {
-        minimumWage: 0,
-        corporateTaxRate: MS.CONFIG.corporateTaxRate
-      },
-      metrics: { history: [] },
-      events: [],
-      causalLog: []
-    };
+  const clone=value=>JSON.parse(JSON.stringify(value));
+  MS.createGameState=function createGameState(scenario,seed){
+    const data=clone(scenario);
+    const districts=data.districts.map(d=>Object.assign({land_cost:0.7,housing_capacity:400,base_rent:0.14,rent:d.base_rent||0.14,land_value:1,pollution:0.05,road_level:0,rail_level:0,service_level:0,resource_bonus:0,industry_bonus:0,tax_rate:0},d));
+    return {version:MS.CONFIG.version,scenarioId:data.id,seed:Number(seed)>>>0,rngState:Number(seed)>>>0,tick:0,date:{year:data.startYear||MS.CONFIG.startYear,month:data.startMonth||MS.CONFIG.startMonth},districts,sectors:data.sectors,
+      households:data.households.map(h=>Object.assign({workers_available:0,workers_employed:0,money:0,wage_income:0,capital_income:0,benefits:0,rent:0,food_spend:0,discretionary_spend:0,organization:0,discontent:0},h)),
+      firms:data.firms.map(f=>Object.assign({active:true,employees:0,desired_employees:0,inventory:0,output:0,sales:0,revenue:0,profit:0,expected_demand:f.capacity*0.72,utilization:0,insolvency_months:0,age:0,trailing_sales:[],market_share:0},f)),
+      economy:{costOfLiving:1,unemploymentRate:0.12,averageWage:0,pendingCapitalIncome:0,investmentThisTick:0,bankruptciesThisTick:0,nextFirmSerial:1,concentration:{}},
+      publicFinance:{cash:20000,taxRevenue:0,expenses:0},rules:Object.assign({allowNewFirms:true,allowAcquisitions:true},data.rules||{}),policies:{minimumWage:0,corporateTaxRate:MS.CONFIG.corporateTaxRate},
+      map:{initialized:false,parcels:[],selectedLayer:'industry',selectedDistrict:'foundry'},metrics:{history:[]},events:[],causalLog:[]};
   };
 })(typeof globalThis !== 'undefined' ? globalThis : window);
