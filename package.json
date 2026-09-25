@@ -1,9 +1,9 @@
 {
   "name": "marxsim",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Deterministic browser-first economic simulation",
   "scripts": {
-    "test": "node tests/phase1.test.js"
+    "test": "node tests/phase1.test.js && node tests/phase2.test.js"
   }
 }

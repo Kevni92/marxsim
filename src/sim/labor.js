@@ -4,6 +4,14 @@
 
   function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
 
+  function commuteFactor(state, homeDistrictId, workDistrictId) {
+    if (homeDistrictId === workDistrictId) return 1;
+    const home = state.districts.find(d => d.id === homeDistrictId);
+    const work = state.districts.find(d => d.id === workDistrictId);
+    const access = Math.min(home ? home.access : 0.5, work ? work.access : 0.5);
+    return 0.55 + access * 0.35;
+  }
+
   MS.updateLaborMarket = function updateLaborMarket(state) {
     const active = state.firms.filter(f => f.active);
     const laborSupply = state.households.reduce((sum, h) => sum + h.workers_available, 0);
@@ -27,21 +35,35 @@
       firm.employees = 0;
     }
 
-    let remaining = laborSupply;
+    const remaining = new Map();
+    for (const h of state.households) {
+      h.workers_employed = 0;
+      remaining.set(h.id, h.workers_available);
+    }
+
     active.sort((a, b) => (b.wage_offer * b.job_security) - (a.wage_offer * a.job_security));
     for (const firm of active) {
-      const hires = Math.min(firm.desired_employees, remaining);
-      firm.employees = Math.max(0, hires);
-      remaining -= hires;
+      let vacancies = firm.desired_employees;
+      const candidates = state.households
+        .map(h => ({ h, commute: commuteFactor(state, h.district, firm.district) }))
+        .sort((a, b) => b.commute - a.commute);
+
+      for (const candidate of candidates) {
+        if (vacancies <= 0) break;
+        const available = remaining.get(candidate.h.id) || 0;
+        if (available <= 0) continue;
+        const accessible = available * candidate.commute;
+        const hires = Math.min(vacancies, accessible);
+        firm.employees += hires;
+        candidate.h.workers_employed += hires;
+        remaining.set(candidate.h.id, Math.max(0, available - hires));
+        vacancies -= hires;
+      }
     }
 
-    const employed = laborSupply - remaining;
-    const ratio = laborSupply > 0 ? employed / laborSupply : 0;
-    for (const h of state.households) {
-      h.workers_employed = h.workers_available * ratio;
-    }
-
-    state.economy.unemploymentRate = laborSupply > 0 ? clamp(remaining / laborSupply, 0, 1) : 0;
+    const employed = active.reduce((sum, f) => sum + f.employees, 0);
+    const unemployed = Math.max(0, laborSupply - employed);
+    state.economy.unemploymentRate = laborSupply > 0 ? clamp(unemployed / laborSupply, 0, 1) : 0;
     const wageBill = active.reduce((sum, f) => sum + f.employees * f.wage_offer, 0);
     state.economy.averageWage = employed > 0 ? wageBill / employed : 0;
   };
