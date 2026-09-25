@@ -2,6 +2,8 @@
 
 **Status:** Preproduction / Game-Design-Phase. Das eigentliche Spiel ist noch nicht implementiert.
 
+**GitHub Pages:** https://kevni92.github.io/marxsim/
+
 MARXSIM wird eine in sich geschlossene Singleplayer-Wirtschaftssimulation für den Browser. Ziel ist nicht, Marx' Aussagen als Wahrheit zu behaupten, sondern die von Marx beschriebenen Mechanismen als **spielbares Modell** erfahrbar zu machen: Lohnarbeit, Mehrwert, Konkurrenz, Kapitalakkumulation, technische Rationalisierung, Reservearmee der Arbeit, Nachfragekrisen, Klassenbildung, Gewerkschaften, Reformen und politische Konflikte.
 
 Der Spieler steuert **nicht die gesamte Wirtschaft**. Private Betriebe und Haushalte handeln autonom. Der Spieler beeinflusst die Entwicklung als kommunale/staatliche Instanz durch Infrastruktur, Regeln, Steuern, Sozialpolitik und politische Entscheidungen. Dadurch soll der eigentliche Kern sichtbar werden: Akteure reagieren auf Anreize und Zwänge des Systems, statt nur Skripte abzuarbeiten.
@@ -19,6 +21,8 @@ Der Spieler steuert **nicht die gesamte Wirtschaft**. Private Betriebe und Haush
 
 - [Game Design](docs/GAME_DESIGN.md)
 - [Simulationsmodell](docs/SIMULATION_MODEL.md)
+- [Rotfeld: Welt und Karte](docs/WORLD_AND_MAP.md)
+- [Theorie-Matrix](docs/THEORY_MATRIX.md)
 - [Visuelle Richtung](docs/VISUAL_DIRECTION.md)
 - [Umsetzungsplan](docs/IMPLEMENTATION_PLAN.md)
 
@@ -26,4 +30,4 @@ Der Spieler steuert **nicht die gesamte Wirtschaft**. Private Betriebe und Haush
 
 Die endgültige Anwendung bleibt statisch und browserbasiert. Die Simulation wird in klar getrennte Systeme zerlegt (Zeit, Bevölkerung, Firmen, Markt, Investitionen, Politik, Ereignisse, Erklärungsschicht). Die Karte wird als eigene Simulations- und Darstellungsebene behandelt, nicht als dekorativer Hintergrund.
 
-GitHub Pages soll bei jedem Push auf `main` den aktuellen Stand veröffentlichen. Während der Preproduction zeigt Pages zunächst nur das Design-Dossier; später wird derselbe Deployment-Pfad das eigentliche Spiel ausliefern.
+GitHub Pages wird bei jedem Push auf `main` über GitHub Actions aktualisiert. Während der Preproduction zeigt Pages zunächst das Design-Dossier; später wird derselbe Deployment-Pfad das eigentliche Spiel ausliefern.
