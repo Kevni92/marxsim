@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  phase1:
+  release-validation:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -17,3 +17,4 @@ jobs:
         with:
           node-version: '22'
       - run: npm test
+      - run: npm run balance
