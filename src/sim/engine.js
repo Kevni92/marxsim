@@ -4,6 +4,7 @@
 
   MS.simulateTick = function simulateTick(state) {
     const rng = new MS.SeededRng(state.rngState);
+    if (MS.beginCausalTick) MS.beginCausalTick(state);
     MS.updatePopulation(state, rng);
     MS.updateCostOfLiving(state);
     MS.updateLaborMarket(state);
@@ -16,6 +17,7 @@
     if (MS.updatePolitics) MS.updatePolitics(state, rng);
     MS.advanceClock(state);
     MS.captureMetrics(state);
+    if (MS.finalizeCausalTick) MS.finalizeCausalTick(state);
     state.rngState = rng.getState();
     return state;
   };
