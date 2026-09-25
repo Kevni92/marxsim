@@ -7,5 +7,5 @@
   economy:{costOfLiving:1,unemploymentRate:0.12,averageWage:0,pendingCapitalIncome:0,investmentThisTick:0,bankruptciesThisTick:0,nextFirmSerial:1,concentration:{}},publicFinance:{cash:20000,taxRevenue:0,expenses:0},rules:Object.assign({allowNewFirms:true,allowAcquisitions:true},data.rules||{}),
   policies:{minimumWage:0,corporateTaxRate:MS.CONFIG.corporateTaxRate,workingHoursLimit:12,workerProtection:false,unionLegal:false,unemploymentAid:false,progressiveTax:false,socialInsurance:false},
   politics:{unionDensity:0.04,organization:0.08,discontent:0.12,reformPressure:0.05,legitimacy:0.55,strikeDays:0,memory:0,activeStrikes:[],support:{laissezFaire:0.45,socialReform:0.30,socialist:0.15,authoritarian:0.10}},
-  map:{initialized:false,parcels:[],selectedLayer:'industry',selectedDistrict:'foundry'},metrics:{history:[]},events:[],causalLog:[]};};
+  theory:{seen:{}},map:{initialized:false,parcels:[],selectedLayer:'industry',selectedDistrict:'foundry'},metrics:{history:[]},events:[],causalLog:[]};};
 })(typeof globalThis!=='undefined'?globalThis:window);
